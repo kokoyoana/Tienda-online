@@ -1,0 +1,9 @@
+{% extends 'index.html' %} {% block comercio %} Eliminación del producto {% endblock comercio %} {% block body %}
+<form method="POST">
+    {% csrf_token %}
+    <h2>¿Desea elminar el producto {{ l.nombre }}?</h2>
+    <button type="submit">Eliminar</button>
+    <a href="{% url 'comercio:eliminar' %}">Cancelar</a>
+</form>
+
+{% endblock body %}
