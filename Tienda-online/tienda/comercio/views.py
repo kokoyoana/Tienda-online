@@ -48,19 +48,24 @@ class AgregarCarrito(CreateView):
 
 #PENDIENTE!! eliminar debe estar en el carrito 
 class EliminarProd(DeleteView):
-    model = Producto
-    form_class = CarritoForm
-    template_name = 'comercio/index.html'
-    success_url = reverse_lazy('comercio:eliminar')  
+    model = Carrito
+    success_url = reverse_lazy('comercio:vercar')  
+
+    def get(self, request, *args, **kwargs):
+        return self.post(request, *args, kwargs)
 
 #nos lleva a carrito
 class ConsultarCarrito(ListView):
-    model = Producto
+    model = Carrito
     template_name = 'comercio/carrito.html'
     context_object_name = 'pro'
-    queryset = Producto.objects.all()
-    
+    queryset = Carrito.objects.all()
 
+class Pagar(DeleteView):
+    model = Carrito
+    success_url = reverse_lazy('comercio:vercar') 
+    queryset = Carrito.objects.all()
 
+    def get(self, request, *args, **kwargs):
+        return self.post(request, *args, kwargs)
 
-   
