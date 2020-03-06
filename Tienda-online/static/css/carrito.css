@@ -8,7 +8,9 @@
     border-top: solid 0.5px white;
     border-bottom: solid 0.3px white;
 }
-
+body{
+    background-color: black;
+}
 #perfiles{
     margin-top: 20px;
     width: 1170px;
@@ -30,17 +32,19 @@ img{
     height: 250px;  
 }
 #contenedor{
-    width: 80%;
+    width: 90%;
     margin-top: 4%;
     margin-bottom: 4%;
     color: pink;
-    font-size: x-large;  
+    font-size: x-large; 
+    margin-left: 70px; 
+   
 }
 h1{
     font-size: 50px;
 }
 .btn{
-    background-color:#A6A4A4;
+    background-color: pink;
 
 }
 
@@ -52,6 +56,7 @@ h1{
     margin-left: 450px;
     font-size: 50px;
     text-align: center;
+
 }
 .navbar{
     border-bottom: 0.5px solid white;

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/ac5fa3b011.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/el.css' %}">
 </head>
 <body>
@@ -15,7 +16,7 @@
 <div class="container-fluid" style="background-color:black;">
     <nav class="navbar">
         <a class="navbar-brand text-white" href="#"></a>
-        <img src="{% static 'img/yuhu.svg' %}" style="height: 50px;margin-right:800px;">
+        <img class"logo" src="{% static 'img/yuhu.svg' %}" style="height: 50px;margin-right:800px;">
 
         <ul class="nav justify-content-end">
             <li class="nav-item">
@@ -28,13 +29,13 @@
                 <a class="nav-link text-white" href="{% url 'comercio:el' %}">Para el</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" href="#">Parejas</a>
+                <a class="nav-link text-white" href="{% url 'comercio:parejas' %}">Parejas</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" href="#">Contacto</a>
+                <a class="nav-link text-white" href="{% url 'comercio:formulario' %}">Contacto</a>
             </li>
             <li>
-            <a href="#"><i class="fas fa-shopping-cart fa-2x" style="color: white;"></i></a>
+            <a href="{% url 'comercio:vercar' %}"><i class="fas fa-shopping-cart fa-2x" style="color: white;"></i></a>
             </li>
         </ul>
     </nav>
@@ -52,7 +53,7 @@
             <div class="card-body">
                 <h4 class="card-title">{{ l.nombre }}</h4>
                 <p class="card-text">{{ l.precio }}€</p>
-                <a href="#" class="btn">Comprar</a>
+                <a class="btn" href="{% url 'comercio:agregar' l.id %}"><i class="fas fa-cart-arrow-down" style="color: #BA0622;"></i>Comprar</a>
             </div>
         </div>
      

@@ -20,7 +20,7 @@
 
         <ul class="nav justify-content-end">
             <li class="nav-item">
-                <a class="nav-link text-white" href="index.html">Inicio</a>
+                <a class="nav-link text-white" href="#">Inicio</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-white" href="{% url 'comercio:ella' %}">Para ella</a>
@@ -29,13 +29,13 @@
                 <a class="nav-link text-white" href="{% url 'comercio:el' %}">Para el</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" href="#">Parejas</a>
+                <a class="nav-link text-white" href="{% url 'comercio:parejas' %}">Parejas</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" href="#">Contacto</a>
+                <a class="nav-link text-white" href="{% url 'comercio:formulario' %}">Contacto</a>
             </li>
             <li>
-            <a href="#"><i class="fas fa-shopping-cart fa-2x" style="color: white;"></i></a>
+            <a href="{% url 'comercio:vercar' %}"><i class="fas fa-shopping-cart fa-2x" style="color: white;"></i></a>
             </li>
         </ul>
     </nav>

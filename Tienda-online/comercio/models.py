@@ -16,7 +16,8 @@ class Carrito(models.Model):
     subTotal = models.FloatField(blank = False,null = False)
     cantidad = models.IntegerField(default = 1, null= True)
     idPro = models.ForeignKey(Producto, on_delete=models.CASCADE, null= True)
-
+    idUser = models.IntegerField(default = 1, null= True)
+    
     def __str__(self):
         return self.idPro
 

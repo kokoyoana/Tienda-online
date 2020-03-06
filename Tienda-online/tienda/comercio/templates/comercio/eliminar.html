@@ -1,9 +1,0 @@
-{% comment %} {% extends 'index.html' %} {% block comercio %} Forma de pago del producto {% endblock comercio %} {% block body %}
-<form method="POST">
-    {% csrf_token %}
-    <h2>¿Desea pagar el producto?</h2>
-    
-    <a href="{% url 'comercio:pagar' %}" class="btn btn-danger">Pagar</a>
-</form>
-
-{% endblock body %} {% endcomment %}

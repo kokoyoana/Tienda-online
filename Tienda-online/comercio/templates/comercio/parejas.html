@@ -8,15 +8,15 @@
     <title>TiendaOnline</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/ac5fa3b011.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="{% static 'css/carrito.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/ella.css' %}">
 </head>
 <body>
    
 <div class="container-fluid" style="background-color:black;">
     <nav class="navbar">
-        <a class="navbar-brand text-white" href="#">
-        <img class="logo" src="{% static 'img/yuhu.svg' %}" style="height: 50px;">
-        </a>
+        <a class="navbar-brand text-white" href="#"></a>
+        <img class="logo" src="{% static 'img/yuhu.svg' %}" style="height: 50px; margin-right:800px;">
 
         <ul class="nav justify-content-end">
             <li class="nav-item">
@@ -29,7 +29,7 @@
                 <a class="nav-link text-white" href="{% url 'comercio:el' %}">Para el</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" href="#">Parejas</a>
+                <a class="nav-link text-white" href="{% url 'comercio:parejas' %}">Parejas</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-white" href="{% url 'comercio:formulario' %}">Contacto</a>
@@ -41,52 +41,28 @@
     </nav>
 
 
-    
 <div id="contenedor">
-        <h1 style="color:pink;">PRODUCTOS</h1>
-            <p class="texto" style="color:pink;"> Productos carrito</p>
+        <h1>PRODUCTOS</h1>
+            <p class="texto"> Para parejas...</p>
+</div>
+    
+    <div id="perfiles">
 
-
-<div class="card">
-  <div class="card-header">
-    <strong class="card-title" style="color:#7F7F7F;">Listado de Productos</strong>
-  </div>
-  <div class="table-stats order-table ov-h">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>SubTotal</th>
-          <th>Cantidad</th>
-          <th>Producto</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for l in pro %}
-        <tr>
-          <td>{{ l.subTotal }}</td>
-          <td>{{ l.cantidad }}</td>
-          <td>{{ l.idPro.nombre }}</td>
-          <td>
-            <a href="{% url 'comercio:eliminar' l.id %}" <i class="fas fa-trash-alt" style="color: #A6A4A4;"></i></a>
-            
-          </td>
-        </tr>
+       {% for l in pro %} 
+        <div class="card" style="width:300px;">
+            <img class="card-img-top tamaño" src="../../static/{{ l.imagen.url }}" alt="Card image">
+            <div class="card-body">
+                <h4 class="card-title">{{ l.nombre }}</h4>
+                <p class="card-text">{{ l.precio }}€</p>
+                <a class="btn" href="{% url 'comercio:agregar' l.id %}"><i class="fas fa-cart-arrow-down" style="color: #BA0622;"></i>Comprar</a>
+            </div>
+        </div>
         {% endfor %}
-      </tbody>
-    </table>
-  </div>
-</div>
 
+ 
+    </div>
 
-<div style="margin-left: 1100px; color:#D2CFCF;">
-Formas de pago:
- <br><a href="{% url 'comercio:pagar' %}" <i class="fab fa-cc-visa fa-2x" style="color: #D2CFCF;"></i><i class="fab fa-cc-mastercard" style="margin-left:20px;"></i><i class="fab fa-cc-paypal" style="margin-left:20px;"></i>
-</a>
-</div>
-
-
-
-    <footer class="page-footer font-small blue" style="color:white;">
+      <footer class="page-footer font-small blue" style="color:white;">
         <div class="card-body">
           <div class="footer-copyright text-center py-3">© 2020 Copyright: Grupo Crece
       </div> 

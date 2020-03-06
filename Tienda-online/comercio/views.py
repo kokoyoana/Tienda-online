@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.views.generic import ListView, CreateView, TemplateView, DeleteView
+from django.views.generic import ListView, CreateView, TemplateView, DeleteView, View
 from .models import Producto, Carrito
 from django.urls import reverse_lazy
 from .forms import CarritoForm
@@ -25,15 +25,22 @@ class ConsultarEl(ListView):
     context_object_name = 'pro'
     queryset = Producto.objects.filter(tipo='M')
 
+#nos lleva a el
+class ConsultarParejas(ListView):
+    model = Producto
+    template_name = 'comercio/parejas.html'
+    context_object_name = 'pro'
+    queryset = Producto.objects.filter(tipo='P')
 
 
 
-#PENDIENTE!! debe ir en el boton de comprar
+
+#VA EN EL BOTON DE CARRITO
 class AgregarCarrito(CreateView):
     model = Carrito
     form_class = CarritoForm
     template_name = 'comercio/agregar.html'
-    success_url = reverse_lazy('comercio:ella')
+    success_url = reverse_lazy('comercio:vercar')
 
     def form_valid(self, form):
         self.object = form.save(commit=False) 
@@ -46,21 +53,33 @@ class AgregarCarrito(CreateView):
 
 
 
-#PENDIENTE!! eliminar debe estar en el carrito 
+#ELIMINA CADA UNIDAD DE PRODUCTO 
 class EliminarProd(DeleteView):
-    model = Producto
-    form_class = CarritoForm
-    template_name = 'comercio/index.html'
-    success_url = reverse_lazy('comercio:eliminar')  
+    model = Carrito
+    success_url = reverse_lazy('comercio:vercar')  
 
-#nos lleva a carrito
+    def get(self, request, *args, **kwargs):
+        return self.post(request, *args, kwargs)
+
+#VEMOS TODOS LOS PRODUCTOS DEL CARRITO
 class ConsultarCarrito(ListView):
-    model = Producto
+    model = Carrito
     template_name = 'comercio/carrito.html'
     context_object_name = 'pro'
-    queryset = Producto.objects.all()
+    queryset = Carrito.objects.all()
+
+
+
+
+#VACIAR EL CARRITO DE COMPRA
+class Pagar(View):
+    model = Carrito
+    def get(self, request, *args, **kwargs):
+        Carrito.objects.all().delete()
+        return redirect('comercio:vercar')
+
+        
+class VerFormulario(ListView):
+    model = Producto
+    template_name = 'comercio/formulario.html'
     
-
-
-
-   
